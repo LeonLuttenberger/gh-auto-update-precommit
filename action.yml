@@ -36,5 +36,6 @@ runs:
         title: "chore: auto-update pre-commit hooks"
         body: "This PR was created automatically by a scheduled workflow to keep pre-commit hooks up to date."
         branch: chore/update-precommit-hooks
+        base: ${{ github.event.repository.default_branch }}
         labels: dependencies
 
