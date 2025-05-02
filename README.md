@@ -8,6 +8,24 @@ This GitHub Action automatically updates the pre-commit hooks in your repository
 - Creates a pull request with the updated hook versions.
 - Easy to integrate into your CI/CD pipeline.
 
+## Prerequisites
+
+- Ensure you have [pre-commit](https://pre-commit.com/) installed locally if you want to test the configuration manually.
+- A `.pre-commit-config.yaml` file must exist in the root of your repository.
+
+## Example `.pre-commit-config.yaml`
+
+Here is an example configuration file:
+
+```yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+```
+
 ## Usage
 
 To use this action in your repository, add the following to your workflow YAML file:
@@ -33,14 +51,13 @@ jobs:
           base-branch: "main" # Optional: Specify the base branch for the pull request
 ```
 
-## Inputs
+### Inputs
 
-### `base-branch`
+- `base-branch`
+  - **Description**: The base branch for the pull request.
+  - **Default**: `main`
 
-- **Description**: The base branch for the pull request.
-- **Default**: `main`
-
-## Outputs
+### Outputs
 
 This action does not produce any outputs.
 
@@ -50,6 +67,21 @@ This action does not produce any outputs.
 2. Add this action to your GitHub workflows as shown in the usage section.
 3. Ensure the GitHub token used by the workflow has write permissions.
 4. Commit and push the workflow file to your repository.
+
+## Troubleshooting
+
+- **Issue**: The action fails to create a pull request.
+  - **Solution**: Ensure the GitHub token used by the workflow has write permissions.
+- **Issue**: Hooks are not updated as expected.
+  - **Solution**: Verify that the `.pre-commit-config.yaml` file is correctly formatted and accessible.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Submit a pull request with a clear description of your changes.
 
 ## License
 
