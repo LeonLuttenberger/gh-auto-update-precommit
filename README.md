@@ -13,7 +13,7 @@ This GitHub Action automatically updates the pre-commit hooks in your repository
 - Ensure you have [pre-commit](https://pre-commit.com/) installed locally if you want to test the configuration manually.
 - A `.pre-commit-config.yaml` file must exist in the root of your repository.
 
-## Example `.pre-commit-config.yaml`
+### Example `.pre-commit-config.yaml`
 
 Here is an example configuration file:
 
