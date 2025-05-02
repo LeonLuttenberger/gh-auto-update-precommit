@@ -29,11 +29,16 @@ jobs:
 
       - name: Run Auto Update Pre-Commit Action
         uses: LeonLuttenberger/gh-auto-update-precommit@v1.0.0
+        with:
+          base-branch: "main" # Optional: Specify the base branch for the pull request
 ```
 
 ## Inputs
 
-This action does not require any inputs.
+### `base-branch`
+
+- **Description**: The base branch for the pull request.
+- **Default**: `main`
 
 ## Outputs
 
