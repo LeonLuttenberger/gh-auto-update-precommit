@@ -43,7 +43,8 @@ This action does not produce any outputs.
 
 1. Ensure you have a `.pre-commit-config.yaml` file in the root of your repository.
 2. Add this action to your GitHub workflows as shown in the usage section.
-3. Commit and push the workflow file to your repository.
+3. Ensure the GitHub token used by the workflow has write permissions.
+4. Commit and push the workflow file to your repository.
 
 ## License
 
