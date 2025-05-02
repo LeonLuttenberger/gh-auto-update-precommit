@@ -1,0 +1,19 @@
+name: Auto Update Pre-Commit Hooks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1' # Runs weekly on Monday at midnight
+
+jobs:
+  update-precommit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Run Auto Update Pre-Commit Action
+        uses: LeonLuttenberger/gh-auto-update-precommit@v1.0.0
