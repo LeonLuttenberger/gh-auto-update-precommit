@@ -20,7 +20,7 @@ Here is an example configuration file:
 ```yaml
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Auto Update Pre-Commit Action
         uses: LeonLuttenberger/gh-auto-update-precommit@v1.0.0
