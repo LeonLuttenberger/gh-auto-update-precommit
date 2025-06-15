@@ -6,6 +6,10 @@ inputs:
     description: The base branch for the pull request
     default: "main"
 
+outputs:
+  changes-committed:
+    description: 'Whether changes were committed'
+
 runs:
   using: "composite"
   steps:
@@ -30,11 +34,16 @@ runs:
         git config user.email "github-actions@github.com"
         git checkout -b chore/update-precommit-hooks || git checkout chore/update-precommit-hooks
         git add .pre-commit-config.yaml
-        git commit -m "chore: auto-update pre-commit hooks" || echo "No changes to commit"
-        git push --set-upstream origin chore/update-precommit-hooks || echo "No changes to push"
+        if git commit -m "chore: auto-update pre-commit hooks"; then
+          echo "changes-committed=true" >> "$GITHUB_OUTPUT"
+          git push --set-upstream origin chore/update-precommit-hooks
+        else
+          echo "changed-committed=false" >> "$GITHUB_OUTPUT"
+        fi
       shell: bash
 
     - name: Create Pull Request
+      if: steps.autoupdate.outputs.changes-committed == "true"
       uses: peter-evans/create-pull-request@v7
       with:
         title: "chore: auto-update pre-commit hooks"
